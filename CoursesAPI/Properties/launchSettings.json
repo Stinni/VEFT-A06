@@ -19,7 +19,7 @@
     "A06": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/courses",
+      "launchUrl": "http://localhost:5001/api/courses",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

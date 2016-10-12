@@ -29,15 +29,26 @@ namespace A06.CoursesAPI.Controllers
 
         // POST api/courses
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Course model)
         {
+            _courses.Add(model);
+            var location = Url.Link("GetCourseById", new { id = model.Id });
+            return new CreatedResult(location, model);
         }
 
         // GET api/courses/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("{id}", Name = "GetCourseById")]
+        public IActionResult GetCourseById(int id)
         {
-            return "value";
+            foreach(var c in _courses)
+            {
+                if (c.Id == id)
+                {
+                    return Ok(c);
+                }
+            }
+            return NotFound();
         }
     }
 }

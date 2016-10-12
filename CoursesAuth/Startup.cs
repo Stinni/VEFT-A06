@@ -8,7 +8,11 @@ namespace A06.CoursesAuth
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDeveloperIdentityServer();
+            // configure identity server with in-memory stores, keys, clients and scopes
+            services.AddDeveloperIdentityServer()
+                .AddInMemoryScopes(Config.GetScopes())
+                .AddInMemoryClients(Config.GetClients())
+                .AddInMemoryUsers(Config.GetUsers());
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
