@@ -30,8 +30,9 @@ namespace A06.CoursesAPI.Controllers
         // POST api/courses
         [HttpPost]
         [Authorize(Policy = "TeachersOnly")]
-        public IActionResult Post([FromBody]Course model)
+        public IActionResult Post([FromBody]Course model = null)
         {
+            if (model == null) return Ok(_courses); // just to see if it does something
             foreach (var c in _courses)
             {
                 if (c.Id == model.Id)

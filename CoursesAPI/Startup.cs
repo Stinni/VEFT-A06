@@ -37,7 +37,7 @@ namespace A06.CoursesAPI
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("TeachersOnly", policy => policy.RequireClaim("IsTeacher"));
+                options.AddPolicy("TeachersOnly", policy => policy.RequireClaim("IsTeacher", "true"));
             });
         }
 
