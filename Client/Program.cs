@@ -148,7 +148,7 @@ namespace A06.Client
                 Console.WriteLine("ERROR posting as user: " + (user ?? "null") + " - " + response.StatusCode);
                 return;
             }
-            Console.WriteLine("SUCCESS posting as user: " + (user ?? "null") + " - content:");
+            Console.WriteLine("SUCCESS posting as user: " + (user ?? "null"));
         }
     }
 }

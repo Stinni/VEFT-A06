@@ -14,7 +14,8 @@ namespace A06.CoursesAuth
                 new Scope
                 {
                     Name = "api1",
-                    Description = "My API"
+                    Description = "My API",
+                    IncludeAllClaimsForUser = true
                 }
             };
         }
