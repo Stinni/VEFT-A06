@@ -29,8 +29,16 @@ namespace A06.CoursesAPI.Controllers
 
         // POST api/courses
         [HttpPost]
+        [Authorize(Policy = "TeachersOnly")]
         public IActionResult Post([FromBody]Course model)
         {
+            foreach (var c in _courses)
+            {
+                if (c.Id == model.Id)
+                {
+                    _courses.Remove(c);
+                }
+            }
             _courses.Add(model);
             var location = Url.Link("GetCourseById", new { id = model.Id });
             return new CreatedResult(location, model);

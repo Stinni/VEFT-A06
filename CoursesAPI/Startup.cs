@@ -34,6 +34,11 @@ namespace A06.CoursesAPI
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("TeachersOnly", policy => policy.RequireClaim("IsTeacher"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
